@@ -3,7 +3,7 @@ const dir = './compiled'
 const moduleAlias = require('module-alias')
 
 // For the development version, we'll use React.
-// Because, it support react hot loading and so on.
+// Because, it supports react hot loading and so on.
 if (!dev) {
   moduleAlias.addAlias('react', 'inferno-compat')
   moduleAlias.addAlias('react-dom/server', 'inferno-server')
