@@ -9,6 +9,7 @@ import {
 } from 'redux';
 
 import reducers from './reducers';
+import { isServer } from './utils';
 
 let reduxStore: Store<{}> | null = null;
 
@@ -33,7 +34,7 @@ export default function initRedux (
 ): Store<any> {
   // Make sure to create a new store for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (!window) {
+  if (isServer()) {
     return create(apollo, initialState)
   }
 

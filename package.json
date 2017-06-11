@@ -8,9 +8,10 @@
     "test": "jest",
     "dev": "concurrently \"tsc --watch\" \"node server.js\"",
     "build": "tsc && next build compiled",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production forever server.js"
   },
   "dependencies": {
+    "forever": "^0.15.3",
     "inferno": "^3.2.0",
     "inferno-compat": "^3.2.0",
     "inferno-server": "^3.2.0",
@@ -34,7 +35,7 @@
     "react-dom": "^15.5.4",
     "react-test-render": "^1.0.3",
     "ts-jest": "^20.0.4",
-    "typescript": "^2.3.2"
+    "typescript": "^2.3.4"
   },
   "jest": {
     "transform": {

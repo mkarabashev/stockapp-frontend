@@ -1,20 +1,21 @@
 import { ApolloClient, createNetworkInterface } from 'react-apollo';
 import * as fetch from 'isomorphic-fetch';
 
+import { isServer } from './utils';
+
 let apolloClient: ApolloClient | null = null;
 
 // Polyfill fetch() on the server (used by apollo-client)
-if (!window) {
+if (isServer()) {
   (<any>global).fetch = fetch
 }
 
 function create (): ApolloClient {
   return new ApolloClient({
-    ssrMode: !window, // Disables forceFetch on the server (so queries are only run once)
+    ssrMode: isServer(), // Disables forceFetch on the server (so queries are only run once)
     networkInterface: createNetworkInterface({
-      uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn', // Server URL (must be absolute)
+      uri: 'http://localhost:8080', // Server URL (must be absolute)
       opts: { // Additional fetch() options like `credentials` or `headers`
-        credentials: 'same-origin'
       }
     })
   })
@@ -23,7 +24,7 @@ function create (): ApolloClient {
 export default function initApollo (): ApolloClient {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (!window) {
+  if (isServer()) {
     return create()
   }
 

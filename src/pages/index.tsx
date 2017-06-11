@@ -1,14 +1,13 @@
 import * as React from 'react';
 
 import Link from '../components/Link';
+import withData, { ICComponent } from '../lib/withData';
 
-interface IHomeProps extends React.Props<any> {}
-
-const HomeComponent: React.StatelessComponent<IHomeProps> = () => (
+const HomeComponent: ICComponent = () => (
   <div>
     Index!
     <Link href="/about"><a>About</a></Link>
   </div>
 );
 
-export default HomeComponent;
+export default withData(HomeComponent);
