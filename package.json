@@ -7,8 +7,14 @@
   "scripts": {
     "test": "jest",
     "dev": "concurrently \"tsc --watch\" \"node server.js\"",
-    "build": "tsc && next build compiled",
+    "clean": "rimraf compiled",
+    "build": "npm clean && tsc && next build compiled",
+    "heroku-postbuild": "npm run build",
     "start": "NODE_ENV=production forever server.js"
+  },
+  "engines": {
+    "node": "6.10.3",
+    "npm": "5.0.3"
   },
   "dependencies": {
     "@types/react-bootstrap": "^0.0.50",
@@ -29,7 +35,8 @@
     "react-bootstrap": "^0.31.0",
     "react-redux": "^5.0.5",
     "recharts": "^1.0.0-alpha.1",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "rimraf": "^2.6.1"
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.34",

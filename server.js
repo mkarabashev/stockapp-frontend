@@ -1,21 +1,22 @@
-const dev = process.env.NODE_ENV !== 'production'
-const dir = './compiled'
-const moduleAlias = require('module-alias')
+require('newrelic');
+const dev = process.env.NODE_ENV !== 'production';
+const dir = './compiled';
+const moduleAlias = require('module-alias');
 
 // For the development version, we'll use React.
 // Because, it supports react hot loading and so on.
 if (!dev) {
-  moduleAlias.addAlias('react', 'inferno-compat')
-  moduleAlias.addAlias('react-dom/server', 'inferno-server')
-  moduleAlias.addAlias('react-dom', 'inferno-compat')
+  moduleAlias.addAlias('react', 'inferno-compat');
+  moduleAlias.addAlias('react-dom/server', 'inferno-server');
+  moduleAlias.addAlias('react-dom', 'inferno-compat');
 }
 
-const { createServer } = require('http')
-const { parse } = require('url')
-const next = require('next')
+const { createServer } = require('http');
+const { parse } = require('url');
+const next = require('next');
 
-const app = next({ dev, dir })
-const handle = app.getRequestHandler()
+const app = next({ dev, dir });
+const handle = app.getRequestHandler();
 
 app.prepare()
   .then(() => {
@@ -27,4 +28,4 @@ app.prepare()
       if (err) throw err
       console.log('> Ready on http://localhost:3000')
     })
-})
+});
