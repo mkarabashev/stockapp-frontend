@@ -12,7 +12,7 @@ if (isServer()) {
 
 const GRAPHQL_URI = process.env.NODE_ENV === 'development'
   ? 'http://localhost:8080/graphql'
-  : 'http://stockapp-backend.herokuapp.com/graphql'
+  : 'https://stockapp-backend.herokuapp.com/graphql'
 
 function create (): ApolloClient {
   return new ApolloClient({
