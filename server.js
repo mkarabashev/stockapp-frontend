@@ -1,5 +1,6 @@
 require('newrelic');
 const dev = process.env.NODE_ENV !== 'production';
+const PORT = dev ? 3000 : proces.env.PORT;
 const dir = './compiled';
 const moduleAlias = require('module-alias');
 
@@ -24,8 +25,8 @@ app.prepare()
       const parsedUrl = parse(req.url, true)
       handle(req, res, parsedUrl)
     })
-    .listen(3000, (err) => {
+    .listen(PORT, (err) => {
       if (err) throw err
-      console.log('> Ready on http://localhost:3000')
+      console.log(`Listening on port ${PORT}`)
     })
 });

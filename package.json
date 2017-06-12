@@ -17,7 +17,12 @@
     "npm": "5.0.3"
   },
   "dependencies": {
+    "@types/isomorphic-fetch": "^0.0.34",
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.29",
+    "@types/react": "^15.0.24",
     "@types/react-bootstrap": "^0.0.50",
+    "@types/react-dom": "^15.5.0",
     "distinct-colors": "^1.0.4",
     "forever": "^0.15.3",
     "immutable": "^3.8.1",
@@ -26,6 +31,7 @@
     "inferno-server": "^3.2.0",
     "isomorphic-fetch": "^2.2.1",
     "module-alias": "^2.0.0",
+    "newrelic": "^1.40.0",
     "next": "^2.4.0",
     "next-redux-wrapper": "^1.1.2",
     "normalize.css": "^7.0.0",
@@ -36,14 +42,10 @@
     "react-redux": "^5.0.5",
     "recharts": "^1.0.0-alpha.1",
     "redux-devtools-extension": "^2.13.2",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "typescript": "^2.3.4"
   },
   "devDependencies": {
-    "@types/isomorphic-fetch": "^0.0.34",
-    "@types/jest": "^19.2.3",
-    "@types/node": "^7.0.29",
-    "@types/react": "^15.0.24",
-    "@types/react-dom": "^15.5.0",
     "concurrently": "^3.4.0",
     "enzyme": "^2.8.2",
     "jest": "^20.0.3",
@@ -51,8 +53,7 @@
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-test-render": "^1.0.3",
-    "ts-jest": "^20.0.4",
-    "typescript": "^2.3.4"
+    "ts-jest": "^20.0.4"
   },
   "jest": {
     "transform": {
