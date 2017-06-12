@@ -8,7 +8,7 @@
     "test": "jest",
     "dev": "concurrently \"tsc --watch\" \"node server.js\"",
     "clean": "rimraf compiled",
-    "build": "npm clean && tsc && next build compiled",
+    "build": "npm run clean && tsc && next build compiled",
     "heroku-postbuild": "npm run build",
     "start": "NODE_ENV=production forever server.js"
   },
