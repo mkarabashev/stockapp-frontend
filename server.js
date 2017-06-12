@@ -1,6 +1,6 @@
 require('newrelic');
 const dev = process.env.NODE_ENV !== 'production';
-const PORT = dev ? 3000 : proces.env.PORT;
+const PORT = dev ? 3000 : process.env.PORT;
 const dir = './compiled';
 const moduleAlias = require('module-alias');
 
