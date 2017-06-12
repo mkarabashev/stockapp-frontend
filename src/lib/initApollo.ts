@@ -10,13 +10,15 @@ if (isServer()) {
   (<any>global).fetch = fetch
 }
 
+const GRAPHQL_URI = process.env.NODE_ENV === 'development'
+  ? 'http://localhost:8080/graphql'
+  : 'http://stockapp-backend.herokuapp.com/graphql'
+
 function create (): ApolloClient {
   return new ApolloClient({
     ssrMode: isServer(), // Disables forceFetch on the server (so queries are only run once)
     networkInterface: createNetworkInterface({
-      uri: 'http://localhost:8080', // Server URL (must be absolute)
-      opts: { // Additional fetch() options like `credentials` or `headers`
-      }
+      uri: GRAPHQL_URI, // Server URL (must be absolute)
     })
   })
 }

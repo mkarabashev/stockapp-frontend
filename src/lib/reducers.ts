@@ -1,10 +1,11 @@
+import { ADD_STOCK } from './constants';
+import { Set } from 'immutable';
+
 export default {
-  example: (state = {}, { type, payload }) => {
+  stocks: (state = Set(), { type, stock }) => {
     switch (type) {
-      case 'EXAMPLE_ACTION':
-        return {
-          ...state
-        }
+      case ADD_STOCK:
+        return state.add(stock.toUpperCase())
       default:
         return state
     }

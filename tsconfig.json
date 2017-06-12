@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es2016",
-        "jsx": "react",
+        "jsx": "react-native",
         "allowJs": true,
         "outDir": "compiled",
         "lib": [ "es2016", "dom" ]

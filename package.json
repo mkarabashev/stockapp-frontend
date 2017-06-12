@@ -11,14 +11,24 @@
     "start": "NODE_ENV=production forever server.js"
   },
   "dependencies": {
+    "@types/react-bootstrap": "^0.0.50",
+    "distinct-colors": "^1.0.4",
     "forever": "^0.15.3",
+    "immutable": "^3.8.1",
     "inferno": "^3.2.0",
     "inferno-compat": "^3.2.0",
     "inferno-server": "^3.2.0",
     "isomorphic-fetch": "^2.2.1",
     "module-alias": "^2.0.0",
     "next": "^2.4.0",
+    "next-redux-wrapper": "^1.1.2",
+    "normalize.css": "^7.0.0",
+    "random-color": "^1.0.1",
+    "random-hex-color": "^1.0.1",
     "react-apollo": "^1.4.2",
+    "react-bootstrap": "^0.31.0",
+    "react-redux": "^5.0.5",
+    "recharts": "^1.0.0-alpha.1",
     "redux-devtools-extension": "^2.13.2"
   },
   "devDependencies": {
