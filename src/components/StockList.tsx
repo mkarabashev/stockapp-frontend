@@ -5,10 +5,15 @@ import { removeStock } from '../lib/actions';
 import Stock from './Stock';
 
 const StockList = ({ stocks, removeStock }) => (
-  <section style={{margin: "20px 10px"}}>
+  <section className="stock-list">
     {stocks.map(stock =>
       <Stock key={stock} stock={stock} remove={removeStock} />
     )}
+    <style jsx>{`
+      .stock-list {
+        margin: 20px 10px;
+      }
+    `}</style>
   </section>
 );
 
