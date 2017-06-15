@@ -3,7 +3,12 @@ import { Set } from 'immutable';
 import { connect } from 'react-redux';
 import { gql, graphql } from 'react-apollo';
 import * as randomHexColor from 'random-hex-color';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  return `${date.getMonth()}/${date.getDate()}/${date.getFullYear().toString().slice(-2)}`
+}
 
 const toChartData = stocks => {
   let chartData = [];
@@ -11,7 +16,7 @@ const toChartData = stocks => {
   for (let stock of stocks) {
     for (let i = 0; i < stock.history.length; i++) {
       const { date, close } = stock.history[i];
-      if (chartData.length <= i) chartData[i] = { name: date }
+      if (chartData.length <= i) chartData[i] = { name: formatDate(date) }
       chartData[i][stock.symbol] = close;
     }
   }
@@ -28,20 +33,20 @@ const Chart = ({ data }: { data?: any }) => {
 
     lines = Object.keys(chartData[0]).slice(1).map(stockName =>
       <Line key={stockName} type="monotone"
-        dataKey={stockName} stroke={randomHexColor()} dot={false} />
+        dataKey={stockName} stroke={randomHexColor({ luminocity: 'dark'})} dot={false} />
     );
   }
 
   return (
-    <LineChart width={700} height={400} data={chartData}
-        margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-      <XAxis dataKey="name"/>
-      <YAxis/>
-      <CartesianGrid strokeDasharray="3 3"/>
-      <Tooltip/>
-      <Legend />
-      {lines}
-    </LineChart>
+    <ResponsiveContainer aspect={2}>
+      <LineChart data={chartData} margin={{ right: 70 }}>
+        <XAxis dataKey="name" minTickGap={30} tick={{ transform: "translate(0, 6)" }}/>
+        <YAxis/>
+        <Tooltip/>
+        <Legend />
+        {lines}
+      </LineChart>
+    </ResponsiveContainer>
   )
 };
 

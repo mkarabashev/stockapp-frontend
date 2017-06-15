@@ -1,11 +1,13 @@
-import { ADD_STOCK } from './constants';
+import { ADD_STOCK, REMOVE_STOCK } from './constants';
 import { Set } from 'immutable';
 
 export default {
-  stocks: (state = Set(), { type, stock }) => {
+  stocks: (state = Set([ 'AAPL', 'NVDA' ]), { type, symbol }) => {
     switch (type) {
       case ADD_STOCK:
-        return state.add(stock.toUpperCase())
+        return state.add(symbol)
+      case REMOVE_STOCK:
+        return state.delete(symbol)
       default:
         return state
     }

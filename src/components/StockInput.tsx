@@ -20,20 +20,34 @@ const StockInput = ({ addStock }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit} inline>
-      <FormGroup>
-        <FormControl
-          inputRef={node => input = node}
-          placeholder="Stock Symbol"
-          type="text"
-        />
-      </FormGroup>
-      <FormGroup>
-        <Button className="form-space" type="submit">Add</Button>
-      </FormGroup>
-      <style>{`
-        .form-space {
-          margin: 0 5px;
+    <Form className="bottom-space" onSubmit={handleSubmit}>
+      <FormControl
+        inputRef={node => input = node}
+        placeholder="Stock Symbol"
+        type="text"
+        className="input"
+      />
+      <Button className="horizontal-space btn-primary" type="submit">Add</Button>
+      <style jsx>{`
+        :global(.horizontal-space) {
+          margin: -3px 0 0 -5px;
+        }
+        :global(.bottom-space) {
+          margin-bottom: 50px;
+          float: right;
+        }
+        :global(.input) {
+          display: inline;
+          width: 250px;
+        }
+        @media (max-width: 400px) {
+          :global(.bottom-space) {
+            margin: 0 0 25px 60px;
+            float: left;
+          }
+          :global(.input) {
+            width: 150px;
+          }
         }
       `}</style>
     </Form>
